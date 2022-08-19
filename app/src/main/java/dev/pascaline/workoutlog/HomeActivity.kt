@@ -41,6 +41,12 @@ class HomeActivity : AppCompatActivity() {
                     true
 
                 }
+                R.id.home -> {
+
+                    supportFragmentManager.beginTransaction().replace(R.id.fcvHome, HomeFragment()).commit()
+                    true
+
+                }
                 else -> false
 
 
