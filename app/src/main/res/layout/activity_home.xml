@@ -20,7 +20,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvHome"
-        android:name="dev.pascaline.workoutlog.PlanFragment"
+        android:name="dev.pascaline.workoutlog.HomeFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bnvHome"
