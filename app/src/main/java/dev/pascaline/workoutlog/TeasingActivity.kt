@@ -13,7 +13,7 @@ class TeasingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnStart.setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this,HomeActivity::class.java))
         }
     }
 }
