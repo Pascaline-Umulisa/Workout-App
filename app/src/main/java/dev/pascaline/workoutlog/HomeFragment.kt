@@ -1,5 +1,6 @@
 package dev.pascaline.workoutlog
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,12 +27,19 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        simpleVideoView = VideoView(context).findViewById(R.id.vdOne) as VideoView
+        simpleVideoView = view.findViewById(R.id.vdOne) as VideoView
 
         if (mediaControls == null) {
             mediaControls = MediaController(context)
             mediaControls!!.setAnchorView(this.simpleVideoView)
         }
+        simpleVideoView!!.setMediaController(mediaControls)
+        simpleVideoView!!.setVideoURI(Uri.parse("android.resource://"
+                +  requireActivity().packageName + "/" + R.raw.one))
+        simpleVideoView!!.requestFocus()
+        simpleVideoView!!.start()
+
+//        simpleVideoView!!.setVideoURI(Uri.parse("android.resource://R.raw.one"))
     }
 
 
