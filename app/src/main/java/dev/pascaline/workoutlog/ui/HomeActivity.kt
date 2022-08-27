@@ -1,9 +1,8 @@
-package dev.pascaline.workoutlog
+package dev.pascaline.workoutlog.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.FragmentContainerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import dev.pascaline.workoutlog.R
 import dev.pascaline.workoutlog.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TeasingActivity"
+    tools:context=".ui.TeasingActivity"
     android:background="@drawable/background">
 
     <TextView
         android:id="@+id/tvWelcome"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="Welcome to FITNESS app"
         android:textAlignment="center"
         android:textColor="#570A0A"
@@ -33,7 +33,6 @@
         android:id="@+id/imgWoman"
         android:layout_width="721dp"
         android:layout_height="490dp"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:cropToPadding="true"
         android:padding="0dp"

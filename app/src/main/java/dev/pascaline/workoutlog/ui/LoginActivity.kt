@@ -1,13 +1,9 @@
-package dev.pascaline.workoutlog
+package dev.pascaline.workoutlog.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
+import dev.pascaline.workoutlog.R
 import dev.pascaline.workoutlog.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -24,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
 
 
       binding.tvSighUp.setOnClickListener {
-            val intent= Intent(this,SignUpActivity::class.java)
+            val intent= Intent(this, SignUpActivity::class.java)
             startActivity(intent)
           finish()
         }
@@ -42,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
              error=true
         }
         if (!error){
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
     }

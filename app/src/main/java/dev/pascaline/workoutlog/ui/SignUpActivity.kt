@@ -1,12 +1,11 @@
-package dev.pascaline.workoutlog
+package dev.pascaline.workoutlog.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import com.google.android.material.textfield.TextInputLayout
+import dev.pascaline.workoutlog.R
 import dev.pascaline.workoutlog.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
@@ -23,7 +22,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.tvLogin.setOnClickListener {
-            val intent= Intent(this,LoginActivity::class.java)
+            val intent= Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
@@ -33,6 +32,7 @@ class SignUpActivity : AppCompatActivity() {
         var email=binding.etEmail.text.toString()
         var password=binding.etPassword.text.toString()
         var confirm=binding.etConfirm.text.toString()
+        var phoneNUmber=binding.etPhone.text.toString()
         if (first.isBlank()){
             binding.tilFirstName.error=getString(R.string.FirstName_required)
         }
@@ -41,6 +41,9 @@ class SignUpActivity : AppCompatActivity() {
         }
         if (email.isBlank()){
            binding.tilEmail.error=getString(R.string.Email_required)
+        }
+        if (phoneNUmber.isBlank()){
+            binding.tilPhone.error="Phone number is required"
         }
         if (password.isBlank()){
             binding.tilPassword.error=getString(R.string.Password_required)

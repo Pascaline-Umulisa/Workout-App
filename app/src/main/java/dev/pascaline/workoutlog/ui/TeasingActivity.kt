@@ -1,4 +1,4 @@
-package dev.pascaline.workoutlog
+package dev.pascaline.workoutlog.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +13,7 @@ class TeasingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnStart.setOnClickListener {
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 }

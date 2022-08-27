@@ -1,4 +1,4 @@
-package dev.pascaline.workoutlog
+package dev.pascaline.workoutlog.ui
 
 import android.net.Uri
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
 import android.widget.VideoView
-import dev.pascaline.workoutlog.databinding.FragmentHomeBinding
+import dev.pascaline.workoutlog.R
 
 
 class HomeFragment : Fragment() {
@@ -46,7 +46,8 @@ class HomeFragment : Fragment() {
         }
         videoOne!!.setMediaController(mediaControls)
         videoOne!!.setVideoURI(Uri.parse("android.resource://"
-                +  requireActivity().packageName + "/" + R.raw.one))
+                +  requireActivity().packageName + "/" + R.raw.one
+        ))
         videoOne!!.requestFocus()
         videoOne!!.start()
     }
@@ -59,7 +60,8 @@ class HomeFragment : Fragment() {
         }
         videoTwo!!.setMediaController(mediaControls)
         videoTwo!!.setVideoURI(Uri.parse("android.resource://"
-                +  requireActivity().packageName + "/" + R.raw.two))
+                +  requireActivity().packageName + "/" + R.raw.two
+        ))
         videoTwo!!.requestFocus()
         videoTwo!!.start()
     }
@@ -72,7 +74,8 @@ class HomeFragment : Fragment() {
         }
         videoThree!!.setMediaController(mediaControls)
         videoThree!!.setVideoURI(Uri.parse("android.resource://"
-                +  requireActivity().packageName + "/" + R.raw.three))
+                +  requireActivity().packageName + "/" + R.raw.three
+        ))
         videoThree!!.requestFocus()
         videoThree!!.start()
     }
@@ -85,7 +88,8 @@ class HomeFragment : Fragment() {
         }
         videoFour!!.setMediaController(mediaControls)
         videoFour!!.setVideoURI(Uri.parse("android.resource://"
-                +  requireActivity().packageName + "/" + R.raw.four))
+                +  requireActivity().packageName + "/" + R.raw.four
+        ))
         videoFour!!.requestFocus()
         videoFour!!.start()
     }
