@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         binding= ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPreps=getSharedPreferences("WORKOUT_PREPS", MODE_PRIVATE)
+        sharedPreps=getSharedPreferences("WORKOUTLOG_PREPS", MODE_PRIVATE)
 
        binding.btnLogin.setOnClickListener {
           validateLogin()
@@ -69,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                 binding.pbLogin.visibility=View.GONE
                 if(response.isSuccessful){
                     var loginResponse=response.body()
+                    saveLoginDetails(loginResponse!!)
                     Toast.makeText(baseContext,loginResponse?.message,Toast.LENGTH_LONG).show()
                     startActivity(Intent(baseContext,HomeActivity::class.java))
                     finish()
@@ -87,6 +88,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun saveLoginDetails(loginResponse:LoginResponse){
-
+        val editor=sharedPreps.edit()
+        editor.putString("ACCESS_TOKEN", loginResponse.accessToken)
+        editor.putString("USER_ID", loginResponse.userId)
+        editor.putString("PROFILE_ID", loginResponse.profileId)
+        editor.apply()
     }
 }
