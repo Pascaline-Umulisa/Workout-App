@@ -1,8 +1,10 @@
 package dev.pascaline.workoutlog.ui
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import dev.pascaline.workoutlog.R
 import dev.pascaline.workoutlog.databinding.ActivityLoginBinding
@@ -16,11 +18,14 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding:ActivityLoginBinding
+    lateinit var sharedPreps:SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPreps=getSharedPreferences("WORKOUT_PREPS", MODE_PRIVATE)
 
        binding.btnLogin.setOnClickListener {
           validateLogin()
@@ -47,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
              error=true
         }
         if (!error){
+            binding.pbLogin.visibility=View.VISIBLE
             var loginRequest=LoginRequest(email,password)
             makeLoginRequest(loginRequest)
 //            startActivity(Intent(this, HomeActivity::class.java))
@@ -60,8 +66,12 @@ class LoginActivity : AppCompatActivity() {
 
         request.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                binding.pbLogin.visibility=View.GONE
                 if(response.isSuccessful){
-                    Toast.makeText(baseContext,response.body()?.message,Toast.LENGTH_LONG).show()
+                    var loginResponse=response.body()
+                    Toast.makeText(baseContext,loginResponse?.message,Toast.LENGTH_LONG).show()
+                    startActivity(Intent(baseContext,HomeActivity::class.java))
+                    finish()
                 }
                 else{
                     val error=response.errorBody()?.string()
@@ -70,8 +80,13 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                binding.pbLogin.visibility=View.GONE
                 Toast.makeText(baseContext,t.message,Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    fun saveLoginDetails(loginResponse:LoginResponse){
+
     }
 }
