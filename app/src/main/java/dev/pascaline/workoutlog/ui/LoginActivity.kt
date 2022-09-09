@@ -94,4 +94,5 @@ class LoginActivity : AppCompatActivity() {
         editor.putString("PROFILE_ID", loginResponse.profileId)
         editor.apply()
     }
+
 }
