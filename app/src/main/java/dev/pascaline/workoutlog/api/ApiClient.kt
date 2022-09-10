@@ -1,4 +1,4 @@
-package dev.pascaline.workoutlog.retrofit
+package dev.pascaline.workoutlog.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
