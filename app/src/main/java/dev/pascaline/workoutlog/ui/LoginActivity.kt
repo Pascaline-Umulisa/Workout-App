@@ -14,6 +14,7 @@ import dev.pascaline.workoutlog.models.LoginRequest
 import dev.pascaline.workoutlog.models.LoginResponse
 import dev.pascaline.workoutlog.api.ApiClient
 import dev.pascaline.workoutlog.api.ApiInterface
+import dev.pascaline.workoutlog.util.Constants
 import dev.pascaline.workoutlog.viewmodel.UserViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -80,9 +81,10 @@ class LoginActivity : AppCompatActivity() {
 
     fun saveLoginDetails(loginResponse:LoginResponse){
         val editor=sharedPreps.edit()
-        editor.putString("ACCESS_TOKEN", loginResponse.accessToken)
-        editor.putString("USER_ID", loginResponse.userId)
-        editor.putString("PROFILE_ID", loginResponse.profileId)
+        val token="Bearer ${loginResponse.accessToken}"
+        editor.putString(Constants.accessToken,token)
+        editor.putString(Constants.userId, loginResponse.userId)
+        editor.putString(Constants.profileId, loginResponse.profileId)
         editor.apply()
     }
 

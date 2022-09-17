@@ -6,13 +6,19 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import dev.pascaline.workoutlog.R
 import dev.pascaline.workoutlog.databinding.ActivityHomeBinding
+import dev.pascaline.workoutlog.util.Constants
+import dev.pascaline.workoutlog.viewmodel.ExerciseViewModel
 
 class HomeActivity : AppCompatActivity() {
 
    lateinit var binding:ActivityHomeBinding
     lateinit var sharedPrefs: SharedPreferences
+    val exerciseViewModel: ExerciseViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +26,9 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 //        castViews()
         setupBottomNav()
+        sharedPrefs=getSharedPreferences(Constants.prefsFile, MODE_PRIVATE)
+        val token=sharedPrefs.getString(Constants.accessToken,Constants.EMPTY_STRING)
+        exerciseViewModel.fetchExerciseCategories(token!!)
 
 
         binding.tvLog.setOnClickListener {
@@ -35,10 +44,17 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-//    fun castViews() {
-//        fcvHome = findViewById(R.id.fcvHome)
-//        bnvHome = findViewById(R.id.bnvHome)
-//    }
+    override fun onResume() {
+        super.onResume()
+        exerciseViewModel.exerciseCategoryLiveData.observe(this, Observer { exerciseCategories->
+            Toast.makeText(baseContext, "fetched ${exerciseCategories.size} categories", Toast.LENGTH_LONG).show()
+        })
+        exerciseViewModel.errorLiveData.observe(this, Observer { errorMsg->
+            Toast.makeText(this,errorMsg,Toast.LENGTH_LONG).show()
+        })
+    }
+
+
 
     fun setupBottomNav() {
        binding.bnvHome.setOnItemSelectedListener { item ->
