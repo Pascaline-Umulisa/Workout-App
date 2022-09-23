@@ -31,16 +31,16 @@ class HomeActivity : AppCompatActivity() {
         exerciseViewModel.fetchExerciseCategories(token!!)
 
 
-        binding.tvLog.setOnClickListener {
-            sharedPrefs = getSharedPreferences("WORKOUTLOG_PREFS", MODE_PRIVATE)
-            val editor=sharedPrefs.edit()
-            editor.putString("ACCESS_TOKEN", "")
-            editor.putString("USER_ID", "")
-            editor.putString("PROFILE_ID", "")
-            editor.apply()
-            startActivity(Intent(this,LoginActivity::class.java))
-            finish()
-        }
+//        binding.tvLog.setOnClickListener {
+//            sharedPrefs = getSharedPreferences("WORKOUTLOG_PREFS", MODE_PRIVATE)
+//            val editor=sharedPrefs.edit()
+//            editor.putString("ACCESS_TOKEN", "")
+//            editor.putString("USER_ID", "")
+//            editor.putString("PROFILE_ID", "")
+//            editor.apply()
+//            startActivity(Intent(this,LoginActivity::class.java))
+//            finish()
+//        }
 
     }
 
